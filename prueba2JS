@@ -1,0 +1,41 @@
+
+//Variable enemigo
+var enemy = {
+	_graphic:'enemy.png',
+	_position:{x: 0, y: 0},
+	_currentDirection: 'right',
+	_score: 10,
+
+	enemy.moveLeft = function () { this._position.x -= 2; };
+	enemy.moveRight = function () { this._position.x += 2; };
+	enemy.advance = function () { this._position.y += 2; };
+  	shoot: function () { console.log('PICHIUM!'); }
+};
+
+var player = {
+	_graphic:'player.png',
+	_position:{x: 0, y: 0},
+	_vidas: 3,
+	
+
+	player.moveLeft = function () { this._position.x -= 2; };
+	player.moveRight = function () { this._position.x += 2; };
+  	shoot: function () { console.log('PICHIUM!'); }
+};
+
+function newPoint(x, y) {
+  var obj = {};
+  obj.x = x;
+  obj.y = y;
+  return obj;
+}
+
+function newShot(position, velocity) {
+  var obj = {};
+  obj._position = position;
+  obj._velocity = velocity;
+  obj.advance = function () {
+    this._position.y += this._velocity;
+  };
+  return obj;
+}
